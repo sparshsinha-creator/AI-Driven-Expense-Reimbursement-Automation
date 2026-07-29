@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "routing_rules": [
+    {
+      "condition": "policy_compliant == true AND risk_score == 'low' AND amount <= 50",
+      "route_to": "auto_approved",
+      "approver_level": "none"
+    },
+    {
+      "condition": "policy_compliant == true AND risk_score IN ('low','medium') AND amount > 50 AND amount <= 500",
+      "route_to": "pending_manager_approval",
+      "approver_level": "direct_manager"
+    },
+    {
+      "condition": "amount > 500",
+      "route_to": "pending_finance_approval",
+      "approver_level": "finance"
+    },
+    {
+      "condition": "category == 'alcohol'",
+      "route_to": "rejected",
+      "approver_level": "none",
+      "notes": "Zero-tolerance policy violation per rule R-02 (alcohol not reimbursable under any circumstance) — auto-rejected without human review."
+    },
+    {
+      "condition": "policy_compliant == false OR risk_score == 'high'",
+      "route_to": "pending_finance_approval",
+      "approver_level": "finance",
+      "notes": "Any policy violation or high-risk flag escalates to finance regardless of amount."
+    }
+  ]
+}

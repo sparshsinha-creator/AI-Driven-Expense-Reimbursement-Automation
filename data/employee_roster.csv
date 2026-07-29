@@ -1,0 +1,11 @@
+employee_id,name,department,role,manager_id,cost_center,location
+E001,Priya Nair,Sales,Account Executive,E006,CC-SALES-01,Mumbai
+E002,Daniel Cho,Engineering,Software Engineer,E007,CC-ENG-01,Seoul
+E003,Maria Gonzalez,Marketing,Marketing Manager,E008,CC-MKT-01,Madrid
+E004,James Wilson,Sales,Account Executive,E006,CC-SALES-01,London
+E005,Aisha Khan,Engineering,Senior Engineer,E007,CC-ENG-01,Dubai
+E006,Robert Singh,Sales,Sales Director,E009,CC-SALES-00,Mumbai
+E007,Linda Park,Engineering,Engineering Manager,E009,CC-ENG-00,Seoul
+E008,Thomas Berger,Marketing,Marketing Director,E009,CC-MKT-00,Berlin
+E009,Sarah Johnson,Executive,VP Operations,,CC-EXEC-00,New York
+E010,Kenji Watanabe,Sales,Account Executive,E006,CC-SALES-01,Tokyo

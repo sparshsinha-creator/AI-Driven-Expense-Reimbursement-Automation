@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "currency_base": "USD",
+  "rules": [
+    {
+      "rule_id": "R-01",
+      "category": "meals",
+      "description": "Individual meal cap (breakfast/lunch/dinner)",
+      "limit": 75,
+      "period": "per_meal",
+      "requires_receipt_above": 25,
+      "notes": "Alcohol is not reimbursable and must be itemized separately if present on the same receipt."
+    },
+    {
+      "rule_id": "R-02",
+      "category": "alcohol",
+      "description": "Alcohol purchases",
+      "limit": 0,
+      "period": "n/a",
+      "requires_receipt_above": 0,
+      "notes": "Not reimbursable under any circumstance, including client entertainment."
+    },
+    {
+      "rule_id": "R-03",
+      "category": "lodging",
+      "description": "Hotel per-night cap, standard cities",
+      "limit": 250,
+      "period": "per_night",
+      "requires_receipt_above": 0,
+      "notes": "Cap rises to $400/night for pre-approved high-cost cities (NYC, London, Tokyo, Dubai)."
+    },
+    {
+      "rule_id": "R-04",
+      "category": "airfare",
+      "description": "Airfare class of service",
+      "limit": null,
+      "period": "per_trip",
+      "requires_receipt_above": 0,
+      "notes": "Economy class required for flights under 6 hours; premium economy allowed above 6 hours with director approval."
+    },
+    {
+      "rule_id": "R-05",
+      "category": "ground_transport",
+      "description": "Taxi / rideshare",
+      "limit": 100,
+      "period": "per_ride",
+      "requires_receipt_above": 25,
+      "notes": "Rides over $100 require a business justification note."
+    },
+    {
+      "rule_id": "R-06",
+      "category": "mileage",
+      "description": "Personal vehicle mileage reimbursement",
+      "limit": 0.67,
+      "period": "per_mile",
+      "requires_receipt_above": 0,
+      "notes": "IRS standard mileage rate; odometer log required for trips over 50 miles."
+    },
+    {
+      "rule_id": "R-07",
+      "category": "per_diem",
+      "description": "International travel per-diem (meals + incidentals)",
+      "limit": 150,
+      "period": "per_day",
+      "requires_receipt_above": 0,
+      "notes": "Applies only to international travel over 24 hours; itemized receipts not required under per-diem."
+    },
+    {
+      "rule_id": "R-08",
+      "category": "office_supplies",
+      "description": "Office supplies / equipment",
+      "limit": 200,
+      "period": "per_purchase",
+      "requires_receipt_above": 25,
+      "notes": "Purchases over $200 require manager pre-approval and an asset tag."
+    },
+    {
+      "rule_id": "R-09",
+      "category": "general",
+      "description": "Receipt requirement threshold",
+      "limit": 25,
+      "period": "n/a",
+      "requires_receipt_above": 25,
+      "notes": "Any expense at or above $25 requires an itemized receipt regardless of category."
+    },
+    {
+      "rule_id": "R-10",
+      "category": "general",
+      "description": "Submission window",
+      "limit": 60,
+      "period": "days",
+      "requires_receipt_above": 0,
+      "notes": "Expenses must be submitted within 60 days of the transaction date."
+    }
+  ]
+}

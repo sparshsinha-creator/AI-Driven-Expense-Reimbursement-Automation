@@ -1,0 +1,89 @@
+{
+  "notes": "Dummy dataset for the 2-day prototype. raw_text simulates what OCR/vision extraction would see on a photographed or emailed receipt. Seeded cases: RCPT-001 (alcohol policy violation), RCPT-006 & RCPT-011 (duplicate submission), RCPT-008 (over threshold, no justification), RCPT-010 (low-confidence/ambiguous scan), RCPT-012 (inflated/anomalous amount).",
+  "receipts": [
+    {
+      "receipt_id": "RCPT-001",
+      "employee_id": "E001",
+      "submitted_at": "2026-07-14T19:40:00+05:30",
+      "channel": "mobile_photo",
+      "raw_text": "TRISHNA RESTAURANT\nMumbai, India\nDate: 14-Jul-2026  Time: 19:12\n1 Tandoori Platter       1400.00\n1 Butter Naan x2          220.00\n1 House Red Wine          950.00\n Service Charge            120.00\nSubtotal                 2690.00\nTax (5%)                  134.50\nTOTAL (INR)              2824.50\n(~ $33.90 USD @ 83.3)\nThank you for dining with us - Business dinner w/ client (Acme Corp)"
+    },
+    {
+      "receipt_id": "RCPT-002",
+      "employee_id": "E002",
+      "submitted_at": "2026-07-15T08:05:00+09:00",
+      "channel": "email_forward",
+      "raw_text": "KAKAO T TAXI RECEIPT\nSeoul, South Korea\nTrip date: 15 Jul 2026 07:48\nFrom: Gimpo Airport  To: Gangnam Office\nFare: KRW 45,000\nCard ending 4471\n(~$34.20 USD)"
+    },
+    {
+      "receipt_id": "RCPT-003",
+      "employee_id": "E003",
+      "submitted_at": "2026-07-16T11:00:00+02:00",
+      "channel": "pdf_import",
+      "raw_text": "HOTEL PRINCESA MADRID\nFolio Summary\nCheck-in: 14-Jul-2026  Check-out: 16-Jul-2026 (2 nights)\nRoom rate: EUR 200.00/night\nCity tax: EUR 4.00/night\nTotal: EUR 408.00\n(~$440.00 USD)\nGuest: Maria Gonzalez\nPurpose: Regional Marketing Summit"
+    },
+    {
+      "receipt_id": "RCPT-004",
+      "employee_id": "E004",
+      "submitted_at": "2026-07-17T06:30:00+01:00",
+      "channel": "mobile_photo",
+      "raw_text": "AIR FRANCE E-TICKET RECEIPT\nPassenger: WILSON/JAMES\nFlight: AF1780 LHR-CDG  17-Jul-2026\nClass: ECONOMY\nFare: GBP 116.00\nTaxes/Fees: GBP 22.00\nTotal: GBP 138.00\n(~$145.00 USD)"
+    },
+    {
+      "receipt_id": "RCPT-005",
+      "employee_id": "E005",
+      "submitted_at": "2026-07-17T14:20:00+04:00",
+      "channel": "mobile_photo",
+      "raw_text": "OFFICE DEPOT DUBAI\nDate: 17-Jul-2026\n1x Adjustable Monitor Stand   AED 330.00\nSubtotal: AED 330.00\nVAT (5%): AED 16.50\nTotal: AED 346.50\n(~$89.99 USD)"
+    },
+    {
+      "receipt_id": "RCPT-006",
+      "employee_id": "E006",
+      "submitted_at": "2026-07-18T20:15:00+05:30",
+      "channel": "mobile_photo",
+      "raw_text": "THE OBEROI - FINE DINING\nMumbai, India\nDate: 18-Jul-2026  Time: 20:02\nParty of 4 - Client Entertainment (Zenith Ltd)\nSet Menu x4              18,000.00\nNon-alcoholic beverages     2,000.00\nService Charge              1,800.00\nSubtotal                  21,800.00\nTax (5%)                   1,090.00\nTOTAL (INR)               25,823.00\n(~$310.00 USD)"
+    },
+    {
+      "receipt_id": "RCPT-007",
+      "employee_id": "E007",
+      "submitted_at": "2026-07-19T09:00:00+09:00",
+      "channel": "manual_entry",
+      "raw_text": "MILEAGE LOG\nEmployee: Linda Park\nDate: 19-Jul-2026\nRoute: Seoul Office -> Client Site (Incheon) -> Seoul Office\nOdometer start: 48,210  Odometer end: 48,330\nTotal miles: 120\nRate: $0.67/mile\nComputed: $80.40"
+    },
+    {
+      "receipt_id": "RCPT-008",
+      "employee_id": "E008",
+      "submitted_at": "2026-07-20T22:45:00+02:00",
+      "channel": "email_forward",
+      "raw_text": "FREE NOW TAXI RECEIPT\nBerlin, Germany\nTrip date: 20 Jul 2026 22:10\nFrom: Berlin Brandenburg Airport  To: Downtown Hotel (via detour - traffic diversion)\nFare: EUR 134.50\n(~$145.00 USD)\nNo note attached."
+    },
+    {
+      "receipt_id": "RCPT-009",
+      "employee_id": "E009",
+      "submitted_at": "2026-07-21T10:00:00-04:00",
+      "channel": "pdf_import",
+      "raw_text": "THE MANHATTAN HOTEL\nNew York, NY\nCheck-in: 20-Jul-2026  Check-out: 21-Jul-2026 (1 night)\nRoom rate: $350.00\nOccupancy tax: $30.00\nTotal: $380.00\nGuest: Sarah Johnson\nPurpose: Board Meeting"
+    },
+    {
+      "receipt_id": "RCPT-010",
+      "employee_id": "E010",
+      "submitted_at": "2026-07-21T23:50:00+09:00",
+      "channel": "mobile_photo",
+      "raw_text": "[LOW QUALITY SCAN - PARTIALLY LEGIBLE]\nTOKYO MK TAXI\nDate: 2?-Jul-2026\nFare: JPY ?,400 (first digit unclear - could be 3 or 8)\nCard payment\n(~$22.70 or ~$56.00 USD depending on digit)"
+    },
+    {
+      "receipt_id": "RCPT-011",
+      "employee_id": "E006",
+      "submitted_at": "2026-07-22T09:05:00+05:30",
+      "channel": "expense_app_resubmit",
+      "raw_text": "THE OBEROI - FINE DINING\nMumbai, India\nDate: 18-Jul-2026  Time: 20:02\nParty of 4 - Client Entertainment (Zenith Ltd)\nSet Menu x4              18,000.00\nNon-alcoholic beverages     2,000.00\nService Charge              1,800.00\nSubtotal                  21,800.00\nTax (5%)                   1,090.00\nTOTAL (INR)               25,823.00\n(~$310.00 USD)\n[Resubmitted via different channel - same transaction as RCPT-006]"
+    },
+    {
+      "receipt_id": "RCPT-012",
+      "employee_id": "E001",
+      "submitted_at": "2026-07-23T13:10:00+05:30",
+      "channel": "mobile_photo",
+      "raw_text": "TAJ LANDS END\nMumbai, India\nDate: 23-Jul-2026  Time: 13:00\nBusiness Lunch - Solo\n1 Chef's Tasting Menu    16,500.00\n1 Bottled Water             250.00\nService Charge             1,650.00\nSubtotal                  18,400.00\nTax (5%)                     920.00\nTOTAL (INR)               19,320.00\n(~$232.00 USD)\nNote: solo lunch, no attendees listed"
+    }
+  ]
+}
