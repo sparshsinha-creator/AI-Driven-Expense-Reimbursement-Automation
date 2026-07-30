@@ -287,8 +287,20 @@ def check_submission_window(txn: dict, rules: dict, submitted_at_by_id: dict) ->
 
     from datetime import date, datetime
 
-    submitted_date = datetime.fromisoformat(submitted_at_raw).date()
-    txn_date = date.fromisoformat(txn["date"])
+    try:
+        submitted_date = datetime.fromisoformat(submitted_at_raw).date()
+        txn_date = date.fromisoformat(txn["date"])
+    except ValueError as exc:
+        return {
+            "rule_id": "R-10",
+            "passed": False,
+            "detail": (
+                f"could not parse a date needed for the submission-window check "
+                f"(transaction date {txn['date']!r}, submitted_at {submitted_at_raw!r}): "
+                f"{exc} - flagging for human review instead of crashing"
+            ),
+        }
+
     days_elapsed = (submitted_date - txn_date).days
 
     passed = 0 <= days_elapsed <= window_days

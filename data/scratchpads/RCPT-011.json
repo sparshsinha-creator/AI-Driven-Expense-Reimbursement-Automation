@@ -1,0 +1,49 @@
+{
+  "receipt_id": "RCPT-011",
+  "entries": [
+    {
+      "step": 1,
+      "thought": "Not yet extracted - invoking 'extract' skill (Extract structured transaction fields (vendor, amount, category, confidence) from raw receipt text via Claude.)",
+      "action": "extract",
+      "observation": {
+        "vendor": "The Oberoi - Fine Dining",
+        "amount_usd": 310.0,
+        "category": "meals",
+        "confidence_score": 0.9
+      }
+    },
+    {
+      "step": 2,
+      "thought": "Extracted and confidence checked, not yet validated against policy - invoking 'validate' skill (Check a structured transaction against deterministic policy rules, escalating ambiguous threshold breaches to Claude reasoning.)",
+      "action": "validate",
+      "observation": {
+        "decision": "flagged",
+        "reason": "Claude reasoning failed after 2 attempts; flagged for human review as a safe default."
+      }
+    },
+    {
+      "step": 3,
+      "thought": "Decision is 'flagged' - a manager/approver is needed to route this for review - invoking 'lookup_manager' skill (Look up the employee's manager/approver via a mock HRIS/MCP tool call, for routing a flagged transaction to review.)",
+      "action": "lookup_manager",
+      "observation": {
+        "tool": "get_employee_manager (mock HRIS/MCP lookup)",
+        "called_at": "2026-07-30T11:15:25.636160+00:00",
+        "employee_id": "E006",
+        "reason": "Decision is 'flagged' - a manager/approver must be identified for review routing.",
+        "result": {
+          "employee_id": "E006",
+          "employee_name": "Robert Singh",
+          "manager_id": "E009",
+          "manager_name": "Sarah Johnson",
+          "found": true
+        }
+      }
+    },
+    {
+      "step": 4,
+      "thought": "Decision reached and, if flagged, a manager/approver has already been identified; nothing more to do.",
+      "action": "stop",
+      "observation": "Decision reached; no further action needed."
+    }
+  ]
+}

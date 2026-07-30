@@ -1,0 +1,31 @@
+{
+  "receipt_id": "RCPT-007",
+  "entries": [
+    {
+      "step": 1,
+      "thought": "Not yet extracted - invoking 'extract' skill (Extract structured transaction fields (vendor, amount, category, confidence) from raw receipt text via Claude.)",
+      "action": "extract",
+      "observation": {
+        "vendor": "Linda Park (Mileage Reimbursement)",
+        "amount_usd": 80.4,
+        "category": "mileage",
+        "confidence_score": 0.9
+      }
+    },
+    {
+      "step": 2,
+      "thought": "Extracted and confidence checked, not yet validated against policy - invoking 'validate' skill (Check a structured transaction against deterministic policy rules, escalating ambiguous threshold breaches to Claude reasoning.)",
+      "action": "validate",
+      "observation": {
+        "decision": "compliant",
+        "reason": "Within policy limits."
+      }
+    },
+    {
+      "step": 3,
+      "thought": "Decision reached and, if flagged, a manager/approver has already been identified; nothing more to do.",
+      "action": "stop",
+      "observation": "Decision reached; no further action needed."
+    }
+  ]
+}
