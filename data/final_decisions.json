@@ -39,12 +39,13 @@
     "matched_condition": "category == 'alcohol'",
     "approver_level": "none",
     "employee_id": "E001",
+    "employee_name": "Priya Nair",
     "approver_id": "E006",
     "approver_name": "Robert Singh",
     "approver_email": "robert.singh@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": false,
-    "summary": "Rejected: the $33.90 Trishna Restaurant meals expense includes \"House Red Wine,\" violating the non-negotiable alcohol policy that bars reimbursement under any circumstance, including client entertainment."
+    "summary": "Rejected: Priya Nair's $33.90 meal expense at Trishna Restaurant includes a \"House Red Wine\" line item, violating the non-negotiable policy that alcohol is never reimbursable, even for client entertainment, with Robert Singh on record."
   },
   {
     "receipt_id": "RCPT-002",
@@ -70,12 +71,13 @@
     "matched_condition": "policy_compliant == true AND risk_score == 'low' AND amount <= 50",
     "approver_level": "none",
     "employee_id": "E002",
+    "employee_name": "Daniel Cho",
     "approver_id": "E007",
     "approver_name": "Linda Park",
     "approver_email": "linda.park@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": false,
-    "summary": "Auto-approved: Linda Park's $34.20 Kakao T Taxi ground transport expense (RCPT-002) is within policy limits and shows no risk signals."
+    "summary": "Auto-approved: Daniel Cho's $34.20 Kakao T Taxi ground transport expense is within policy limits with no risk signals detected, with Linda Park kept on record as approver."
   },
   {
     "receipt_id": "RCPT-003",
@@ -105,12 +107,13 @@
     "matched_condition": "policy_compliant == true AND risk_score IN ('low','medium') AND amount > 50 AND amount <= 500",
     "approver_level": "direct_manager",
     "employee_id": "E003",
+    "employee_name": "Maria Gonzalez",
     "approver_id": "E008",
     "approver_name": "Thomas Berger",
     "approver_email": "thomas.berger@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Thomas Berger (E008) needs to review and approve this $440.00 Hotel Princesa Madrid lodging expense, which is within policy limits and shows no duplicate or outlier risk signals."
+    "summary": "Thomas Berger needs to approve Maria Gonzalez's $440.00 lodging expense at Hotel Princesa Madrid, which is within policy limits and shows no duplicate or outlier risk signals."
   },
   {
     "receipt_id": "RCPT-004",
@@ -140,12 +143,13 @@
     "matched_condition": "policy_compliant == true AND risk_score IN ('low','medium') AND amount > 50 AND amount <= 500",
     "approver_level": "direct_manager",
     "employee_id": "E004",
+    "employee_name": "James Wilson",
     "approver_id": "E006",
     "approver_name": "Robert Singh",
     "approver_email": "robert.singh@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Robert Singh (E006) needs to approve this $145.00 Air France airfare charge, which is within policy limits and flagged low risk with no duplicate or outlier signals detected."
+    "summary": "Robert Singh needs to review and approve James Wilson's $145.00 Air France airfare expense, which is within policy limits and shows no duplicate or outlier risk signals."
   },
   {
     "receipt_id": "RCPT-005",
@@ -175,12 +179,13 @@
     "matched_condition": "policy_compliant == true AND risk_score IN ('low','medium') AND amount > 50 AND amount <= 500",
     "approver_level": "direct_manager",
     "employee_id": "E005",
+    "employee_name": "Aisha Khan",
     "approver_id": "E007",
     "approver_name": "Linda Park",
     "approver_email": "linda.park@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Linda Park (E007) needs to approve this $89.99 Office Depot Dubai office supplies charge, which is within policy limits and shows no duplicate or outlier risk signals."
+    "summary": "Linda Park needs to approve Aisha Khan's $89.99 Office Depot Dubai office supplies purchase, which is within policy limits and flagged as low risk with no duplicate or outlier signals."
   },
   {
     "receipt_id": "RCPT-006",
@@ -218,12 +223,13 @@
     "matched_condition": "policy_compliant == false OR risk_score == 'high'",
     "approver_level": "finance",
     "employee_id": "E006",
-    "approver_id": "E009",
-    "approver_name": "Sarah Johnson",
-    "approver_email": "sarah.johnson@meridiancorp.com",
+    "employee_name": "Robert Singh",
+    "approver_id": "FINANCE-TEAM",
+    "approver_name": "Finance Team",
+    "approver_email": "finance@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Sarah Johnson (E009) needs to review this $310 Oberoi fine dining charge for finance approval, since it slightly exceeds the $75 per-person meal cap ($77.50/person for 4 diners) and matches the vendor, date, and amount of RCPT-011, raising a strong possibility of duplicate submission despite being legitimate client entertainment."
+    "summary": "Finance Team needs to decide on Robert Singh's $310.00 Oberoi client dinner, which slightly exceeds the $75 per-person meal cap (~$77.50/person for 4 diners) and matches RCPT-011 in vendor, date, and amount\u2014raising a strong duplicate-submission concern despite otherwise legitimate entertainment."
   },
   {
     "receipt_id": "RCPT-007",
@@ -249,12 +255,13 @@
     "matched_condition": "policy_compliant == true AND risk_score IN ('low','medium') AND amount > 50 AND amount <= 500",
     "approver_level": "direct_manager",
     "employee_id": "E007",
+    "employee_name": "Linda Park",
     "approver_id": "E009",
     "approver_name": "Sarah Johnson",
     "approver_email": "sarah.johnson@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Sarah Johnson (E009) needs to approve Linda Park's $80.40 mileage reimbursement, which is within policy limits and flagged as low risk with no duplicate or outlier signals."
+    "summary": "Sarah Johnson needs to approve Linda Park's $80.40 mileage reimbursement, which is within policy limits and shows no duplicate or outlier risk signals."
   },
   {
     "receipt_id": "RCPT-008",
@@ -280,12 +287,13 @@
     "matched_condition": "policy_compliant == false OR risk_score == 'high'",
     "approver_level": "finance",
     "employee_id": "E008",
-    "approver_id": "E009",
-    "approver_name": "Sarah Johnson",
-    "approver_email": "sarah.johnson@meridiancorp.com",
+    "employee_name": "Thomas Berger",
+    "approver_id": "FINANCE-TEAM",
+    "approver_name": "Finance Team",
+    "approver_email": "finance@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Sarah Johnson (E009) must decide on this $145.00 FREE NOW TAXI ground_transport charge, flagged for exceeding the $100 threshold and category average without a required business justification note, presenting medium risk despite a plausible airport-transfer context."
+    "summary": "Thomas Berger's $145.00 FREE NOW TAXI charge exceeds the ground_transport threshold and is missing a required business justification note, so Finance Team needs to review and decide on this medium-risk expense."
   },
   {
     "receipt_id": "RCPT-009",
@@ -315,12 +323,13 @@
     "matched_condition": "policy_compliant == true AND risk_score IN ('low','medium') AND amount > 50 AND amount <= 500",
     "approver_level": "direct_manager",
     "employee_id": "E009",
+    "employee_name": "Sarah Johnson",
     "approver_id": null,
     "approver_name": null,
     "approver_email": null,
     "approver_resolution_note": "Sarah Johnson (E009, VP Operations) has no manager_id in the roster - likely the top of the reporting chain.",
     "approval_action_required": true,
-    "summary": "Sarah Johnson's $380.00 lodging charge at The Manhattan Hotel is policy-compliant and low-risk, but no manager could be resolved because her roster record has no manager_id (likely the top of the reporting chain), so this requires an alternate approval path rather than standard manager sign-off."
+    "summary": "No approver could be resolved for Sarah Johnson (E009) because she has no manager_id in the roster\u2014likely the top of the reporting chain\u2014so this $380.00 Manhattan Hotel lodging expense (within policy, low risk) needs an alternate approval path rather than standard manager sign-off."
   },
   {
     "receipt_id": "RCPT-010",
@@ -346,12 +355,13 @@
     "matched_condition": "policy_compliant == false OR risk_score == 'high'",
     "approver_level": "finance",
     "employee_id": "E010",
-    "approver_id": "E006",
-    "approver_name": "Robert Singh",
-    "approver_email": "robert.singh@meridiancorp.com",
+    "employee_name": "Kenji Watanabe",
+    "approver_id": "FINANCE-TEAM",
+    "approver_name": "Finance Team",
+    "approver_email": "finance@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Robert Singh (E006) needs to verify this $22.70 Tokyo MK Taxi charge, flagged for finance approval because a -6 day submission gap suggests poor OCR misread the transaction date, though the charge itself is low risk with no duplicate or outlier signals."
+    "summary": "Finance Team needs to review Kenji Watanabe's $22.70 Tokyo MK Taxi charge because a -6 day submission gap suggests possible OCR misreading of the transaction date, though the expense itself shows no duplicate or outlier risk signals."
   },
   {
     "receipt_id": "RCPT-011",
@@ -389,12 +399,13 @@
     "matched_condition": "policy_compliant == false OR risk_score == 'high'",
     "approver_level": "finance",
     "employee_id": "E006",
-    "approver_id": "E009",
-    "approver_name": "Sarah Johnson",
-    "approver_email": "sarah.johnson@meridiancorp.com",
+    "employee_name": "Robert Singh",
+    "approver_id": "FINANCE-TEAM",
+    "approver_name": "Finance Team",
+    "approver_email": "finance@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Sarah Johnson (E009) needs to review this $310.00 Oberoi fine-dining charge for finance approval because it's an explicit resubmission of RCPT-006 (same vendor, date, and amount) posing a duplicate-payment risk, and it also exceeds the $75/person meal cap at $77.50/person for the 4-person client dinner."
+    "summary": "Finance Team needs to decide on Robert Singh's $310.00 Oberoi dinner receipt, which is flagged as a likely duplicate of previously submitted RCPT-006 and also exceeds the $75/person meal cap ($77.50/person for 4 people)."
   },
   {
     "receipt_id": "RCPT-012",
@@ -432,11 +443,12 @@
     "matched_condition": "policy_compliant == false OR risk_score == 'high'",
     "approver_level": "finance",
     "employee_id": "E001",
-    "approver_id": "E006",
-    "approver_name": "Robert Singh",
-    "approver_email": "robert.singh@meridiancorp.com",
+    "employee_name": "Priya Nair",
+    "approver_id": "FINANCE-TEAM",
+    "approver_name": "Finance Team",
+    "approver_email": "finance@meridiancorp.com",
     "approver_resolution_note": null,
     "approval_action_required": true,
-    "summary": "Robert Singh (E006) needs to review and approve this $232.00 Taj Lands End meal expense, which exceeds the $75.00 per-meal cap despite no duplicate or outlier risk signals detected."
+    "summary": "Finance Team needs to decide on Priya Nair's $232.00 meal expense at Taj Lands End, which exceeds the $75.00 per-meal cap despite showing no duplicate or outlier risk signals."
   }
 ]

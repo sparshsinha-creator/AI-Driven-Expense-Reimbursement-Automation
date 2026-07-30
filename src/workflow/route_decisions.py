@@ -135,6 +135,18 @@ def route_all(transactions: list[dict], routing_rules: list[dict]) -> list[dict]
     return routed
 
 
+# Fixed placeholder identity for approver_level == "finance" cases. Not looked
+# up from employee_roster.csv - this dummy dataset has no real finance
+# department, so finance escalations get a department-level identity rather
+# than (incorrectly) reusing the submitter's direct reporting manager.
+FINANCE_TEAM_APPROVER = {
+    "approver_id": "FINANCE-TEAM",
+    "approver_name": "Finance Team",
+    "approver_email": "finance@meridiancorp.com",
+    "approver_resolution_note": None,
+}
+
+
 def load_roster(path: Path) -> dict[str, dict]:
     with open(path, newline="", encoding="utf-8") as f:
         return {row["employee_id"]: row for row in csv.DictReader(f)}
@@ -200,11 +212,29 @@ def attach_approvers(
         if employee_id is None:
             raise ValueError(f"no employee_id found in raw_receipts.json for {txn['receipt_id']!r}")
 
-        approver = resolve_approver(employee_id, roster)
+        # The submitter - looked up the same way as the approver (roster join
+        # by employee_id) but this is the employee who filed the expense, not
+        # who approves it. Kept distinct from approver_name even though they
+        # can coincide (e.g. a manager's own claim goes to their own manager,
+        # who may also be someone else's approver on a different claim).
+        employee = roster.get(employee_id)
+        employee_name = employee["name"] if employee is not None else None
+
+        # Finance escalations go to a fixed Finance Team identity, not the
+        # submitter's direct manager - approver_level == "direct_manager"
+        # (pending_manager_approval) and "none" (rejected/auto_approved,
+        # record-keeping only) both still resolve the actual reporting
+        # manager as before.
+        if txn["approver_level"] == "finance":
+            approver = dict(FINANCE_TEAM_APPROVER)
+        else:
+            approver = resolve_approver(employee_id, roster)
+
         result.append(
             {
                 **txn,
                 "employee_id": employee_id,
+                "employee_name": employee_name,
                 **approver,
                 "approval_action_required": txn["routed_status"] in STATUSES_REQUIRING_ACTION,
             }
@@ -213,13 +243,24 @@ def attach_approvers(
 
 
 def print_approver_table(routed: list[dict]) -> None:
-    columns = ["receipt_id", "routed_status", "approver_id", "approver_name", "approver_email", "action_required"]
+    columns = [
+        "receipt_id",
+        "routed_status",
+        "employee_id",
+        "employee_name",
+        "approver_id",
+        "approver_name",
+        "approver_email",
+        "action_required",
+    ]
     str_rows = []
     for t in routed:
         str_rows.append(
             {
                 "receipt_id": t["receipt_id"],
                 "routed_status": t["routed_status"],
+                "employee_id": t["employee_id"] or "NONE",
+                "employee_name": t["employee_name"] or "NONE",
                 "approver_id": t["approver_id"] or "NONE",
                 "approver_name": t["approver_name"] or "NONE",
                 "approver_email": t["approver_email"] or "NONE",
@@ -256,8 +297,19 @@ def print_approver_table(routed: list[dict]) -> None:
 SUMMARY_SYSTEM_PROMPT = """You are drafting a one-sentence approval summary for an \
 expense reimbursement workflow. You will be given a transaction's vendor, amount, \
 category, Phase 3 policy reasoning, Phase 4 risk explanation (if any), its routed \
-workflow status, and the result of resolving its approver (either a named approver, or \
-a note explaining why no approver could be resolved).
+workflow status, the SUBMITTING EMPLOYEE (who incurred/filed this expense), and the \
+result of resolving its APPROVER (a different person who reviews it - either a named \
+approver, or a note explaining why no approver could be resolved).
+
+The submitting employee and the approver are almost always two different people - do \
+not conflate them. The expense belongs to the submitting employee; the approver is only \
+mentioned because they are the one who needs to act (or, for auto_approved/rejected, the \
+person kept on record). Never describe the approver as the one who made the purchase or \
+incurred the charge.
+
+The approver named "Finance Team" is a department, not an individual person - phrase \
+the sentence accordingly (e.g. "requires Finance Team review" or "Finance Team needs to \
+decide on..."), not as if it were someone's personal name.
 
 Write EXACTLY ONE sentence a busy approver could read in two seconds and immediately \
 understand what's being asked of them, if anything.
@@ -288,9 +340,11 @@ def _format_approver_context(txn: dict) -> str:
 
 
 def build_summary_prompt(txn: dict) -> str:
+    submitter = txn["employee_name"] or txn["employee_id"]
     return (
         f"Transaction {txn['receipt_id']}: {txn['vendor']}, {txn['category']}, "
         f"${txn['amount_usd']:.2f}.\n"
+        f"Submitting employee (incurred this expense): {submitter} ({txn['employee_id']})\n"
         f"Phase 3 policy reasoning ({txn['decision']}): {txn['reason']}\n"
         f"Phase 4 risk assessment ({txn['risk_score']} risk): {txn['risk_explanation']}\n"
         f"Routed status: {txn['routed_status']}\n"
@@ -349,7 +403,7 @@ def write_final_decisions(records: list[dict]) -> None:
 
 
 def print_final_summary_table(records: list[dict]) -> None:
-    columns = ["receipt_id", "routed_status", "approver_name", "summary"]
+    columns = ["receipt_id", "routed_status", "employee_name", "approver_name", "summary"]
     str_rows = []
     for r in records:
         summary = r["summary"]
@@ -358,6 +412,7 @@ def print_final_summary_table(records: list[dict]) -> None:
             {
                 "receipt_id": r["receipt_id"],
                 "routed_status": r["routed_status"],
+                "employee_name": r["employee_name"] or "NONE",
                 "approver_name": r["approver_name"] or "NONE",
                 "summary": truncated,
             }
