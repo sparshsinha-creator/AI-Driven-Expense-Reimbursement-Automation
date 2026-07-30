@@ -1,0 +1,74 @@
+[
+  {
+    "payload": {
+      "transaction_id": "RCPT-002",
+      "amount_usd": 34.2,
+      "payee": "E002",
+      "approver_identity": "workflow_agent",
+      "timestamp": "2026-07-30T15:05:15.063301+00:00"
+    },
+    "signatures": {
+      "workflow_agent": "Cmi0D948vc9VVSyv4biBGiqLY2DEIlMAYWGJaQk5D/kx4qu7HFeqic59TxvoxjfLF19akDvZeEBNvrLfDGGW5MQI0WerXbZ0ORFyEN4b36rTXRHSzqv8qD2S3TfWjFzMXn/wKSuFTmHSKboNsqqWh6VQPItLN+H6TThwPD+OrPyc85e2+QzCCOgKxE6gR71I5gjvXLZD0CYC/PbXjnqj1z40+iPQT9bQRjNbfqvpyH8nSVT+aADs4rrh0VpuKVY7BrogIvH4Xwt8xDThBxBFoV/QvjLw5u/5FjY1fyMmNxYq3Ejv9j3pgGtkPyc2jl/FISkLAA6GPbWL6Hv1Frs3Jg=="
+    }
+  },
+  {
+    "payload": {
+      "transaction_id": "RCPT-003",
+      "amount_usd": 440.0,
+      "payee": "E003",
+      "approver_identity": "workflow_agent",
+      "timestamp": "2026-07-30T15:05:15.103667+00:00"
+    },
+    "signatures": {
+      "workflow_agent": "SjAxJ68t8863+mmB5BOw2GVaf4q8jkdgPNDJwh4OqXPIOBb2Gm2r3k5TdXa1zY6qyA/9ZWL7oNxXORQ2tmvOhSVYHDqv6BAMlP9ZWbL6Rruj00UeRvzyCBbbRat5NLRokbPPby8VyIgczgnkf0HwHTpfgN15JxwRhNRb6XrAoIh5AukvszeE2oXeOB0a1Q+kxmf1L3jd8KgGCYTey6g2ixkoe6+84R5FF5G6KoYzNz/L/jaj5GGRd5xiZcp2ptndjlkRWnHSnN374wiln573qLW8NxhcB4i9Avfbc7ZL4kn4M/22mKd60fegHR1y52/umS50Jsy5kEX0FG3g/S1drQ=="
+    }
+  },
+  {
+    "payload": {
+      "transaction_id": "RCPT-004",
+      "amount_usd": 145.0,
+      "payee": "E004",
+      "approver_identity": "workflow_agent",
+      "timestamp": "2026-07-30T15:05:15.138728+00:00"
+    },
+    "signatures": {
+      "workflow_agent": "TeNKjZWHNxiIi5IkOtLJw3P2e6ni6jmWDNx2cLhqxY42F8Qw/pCO9HtG4wrwxFt2/IQL+/6DPUZtYVO6aqJgPpC4apZ8UcofGHdrvguoxLMEV1hTjk9Kx1Yxb2a10ga4B8sGbiX300SAlCS13hhGruHp4QSo4NOxD8eXtzfk5S6cmP59euC65Q1hmNWmBrVmHKgV7EkhZEhFZfwCCYd2Pgs5vHFvgDAYB4nr5OHvFWCsoJw37Wx59oXGlcKkdzCrYbAzM8qhFnrmgiixPnPt7jCRk+gxllZA9kufy6cF1d7MO6QPiohWWxSAGfSAGo+huWmEM+DHIuTqLUpJwG1Vmw=="
+    }
+  },
+  {
+    "payload": {
+      "transaction_id": "RCPT-005",
+      "amount_usd": 89.99,
+      "payee": "E005",
+      "approver_identity": "workflow_agent",
+      "timestamp": "2026-07-30T15:05:15.173334+00:00"
+    },
+    "signatures": {
+      "workflow_agent": "dt4lfBII0gDMYvjIM1VfS1c3Q7swI/65ktkfhV+H2wo07FtdXIfU08lsaSeatVs+Y/DHKLDUtHU8AeeZ9jBHgTu+04o0pPCUIT3P4V4jJu+XH/ioJDdMr17sqKD6CHUrWFtDKdOY53Kxz1fv1hy8PLtgCvbfC8/fPEWePNJ07ydca/6ZzfELdOU5DXGSIqD8kexaOi02STKr4VnlbP63IjB1wjHm0eZLDHJZONlMCRA01EAr8uhItpf0dNDnggsRRzTzF0TTxssgqOH1Qr1gO4EBlNqzTgDpcWq8w42OxVtY0O1z/QLWqvd8b5o0rBWWxU4t0xA1lSRWX7kbbE5seA=="
+    }
+  },
+  {
+    "payload": {
+      "transaction_id": "RCPT-007",
+      "amount_usd": 80.4,
+      "payee": "E007",
+      "approver_identity": "workflow_agent",
+      "timestamp": "2026-07-30T15:05:15.210191+00:00"
+    },
+    "signatures": {
+      "workflow_agent": "dPh3BN2wKgK9MnoiWVnOvUPclx3HBYA7AEwdJ+kZowHfD2nY0xJsCkN58pGze84Qo2RwpGbTZxDf1Usqers2UTQ2dmaW9NbJF+SgmFIcrsnAo3GNOCav3ObAP60CpqLSSRwffVG1waqdBtnsnnxUNlw7yDc7EX5pxpGAsNjFSfIDqzeQy6klg4C2908Tx1L3wnIjLmTI3kyJctuZOOD7NpIbj2z4KO32Qgz54fAz1wjop+glqIAa+q1XF1qmX3kBfrR+GtJM8zjiNPix8hTCwjOg9G73zgKt6DgUyZNLkSf1iQUa8gv1uq54AXoMNYBUaQHqJU0NJjEI72hgrLAtsQ=="
+    }
+  },
+  {
+    "payload": {
+      "transaction_id": "RCPT-009",
+      "amount_usd": 380.0,
+      "payee": "E009",
+      "approver_identity": "workflow_agent",
+      "timestamp": "2026-07-30T15:05:15.247614+00:00"
+    },
+    "signatures": {
+      "workflow_agent": "QqyhXJJYhhBDzr0J++S3ofuiIG0HWy+yrItugvRgTipij8LoOMOxK+HTocYTcBuZCWma2tSy+d7jGPhs4FW1W89FAhjb45k8IQ6MrwuohZjhsisApoC9WDvfAM1yL8RQfyeKJsk+eL5ykoI5i4RxvPw8E4Cdi6WS1WhSr45L9QrX+CctqEkqCexR7AfskrFOic/TtIMqEFyA3/QkH9WapTJYQkX73vFfhFOSdbcb4HISw9cZ0ZqkKJrnTHy9rgBGDROxnaFwapIffbzE9euP3Y1+2yxK0moX9IrT4FnUm+2Q93V1xE8WBUbv1VkD46SdbKFA6pcWQjH99nZj5LOJtg=="
+    }
+  }
+]
