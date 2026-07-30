@@ -1,0 +1,362 @@
+[
+  {
+    "receipt_id": "RCPT-001",
+    "vendor": "Trishna Restaurant",
+    "date": "2026-07-14",
+    "amount": 2824.5,
+    "currency": "INR",
+    "amount_usd": 33.9,
+    "category": "meals",
+    "line_items": [
+      {
+        "description": "Tandoori Platter",
+        "amount": 1400.0
+      },
+      {
+        "description": "Butter Naan x2",
+        "amount": 220.0
+      },
+      {
+        "description": "House Red Wine",
+        "amount": 950.0
+      },
+      {
+        "description": "Service Charge",
+        "amount": 120.0
+      },
+      {
+        "description": "Tax (5%)",
+        "amount": 134.5
+      }
+    ],
+    "confidence_score": 0.92,
+    "decision": "flagged",
+    "reason": "Non-negotiable rule violated: line item 'House Red Wine' matches alcohol keyword 'Wine' - Not reimbursable under any circumstance, including client entertainment.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 0.177,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-002",
+    "vendor": "Kakao T Taxi",
+    "date": "2026-07-15",
+    "amount": 45000,
+    "currency": "KRW",
+    "amount_usd": 34.2,
+    "category": "ground_transport",
+    "line_items": [
+      {
+        "description": "Taxi fare from Gimpo Airport to Gangnam Office",
+        "amount": 45000
+      }
+    ],
+    "confidence_score": 0.9,
+    "decision": "compliant",
+    "reason": "Within policy limits.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 0.508,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-003",
+    "vendor": "Hotel Princesa Madrid",
+    "date": "2026-07-14",
+    "amount": 408.0,
+    "currency": "EUR",
+    "amount_usd": 440.0,
+    "category": "lodging",
+    "line_items": [
+      {
+        "description": "Room rate (2 nights @ EUR 200.00)",
+        "amount": 400.0
+      },
+      {
+        "description": "City tax (2 nights @ EUR 4.00)",
+        "amount": 8.0
+      }
+    ],
+    "confidence_score": 0.95,
+    "decision": "compliant",
+    "reason": "Within policy limits.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 1.073,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-004",
+    "vendor": "Air France",
+    "date": "2026-07-17",
+    "amount": 138.0,
+    "currency": "GBP",
+    "amount_usd": 145.0,
+    "category": "airfare",
+    "line_items": [
+      {
+        "description": "Fare (LHR-CDG, Economy)",
+        "amount": 116.0
+      },
+      {
+        "description": "Taxes/Fees",
+        "amount": 22.0
+      }
+    ],
+    "confidence_score": 0.9,
+    "decision": "compliant",
+    "reason": "Within policy limits.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 1.0,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-005",
+    "vendor": "Office Depot Dubai",
+    "date": "2026-07-17",
+    "amount": 346.5,
+    "currency": "AED",
+    "amount_usd": 89.99,
+    "category": "office_supplies",
+    "line_items": [
+      {
+        "description": "Adjustable Monitor Stand",
+        "amount": 330.0
+      },
+      {
+        "description": "VAT (5%)",
+        "amount": 16.5
+      }
+    ],
+    "confidence_score": 0.95,
+    "decision": "compliant",
+    "reason": "Within policy limits.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 1.0,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-006",
+    "vendor": "The Oberoi - Fine Dining",
+    "date": "2026-07-18",
+    "amount": 25823.0,
+    "currency": "INR",
+    "amount_usd": 310.0,
+    "category": "meals",
+    "line_items": [
+      {
+        "description": "Set Menu x4",
+        "amount": 18000.0
+      },
+      {
+        "description": "Non-alcoholic beverages",
+        "amount": 2000.0
+      },
+      {
+        "description": "Service Charge",
+        "amount": 1800.0
+      },
+      {
+        "description": "Tax (5%)",
+        "amount": 1090.0
+      }
+    ],
+    "confidence_score": 0.9,
+    "decision": "flagged",
+    "reason": "Although no alcohol was involved and the meal was legitimate client entertainment, the $310 total still averages about $77.50 per person for the 4 diners, exceeding the $75 per-meal cap, so it needs human review to confirm the per-person allocation.",
+    "is_duplicate": true,
+    "duplicate_of": [
+      "RCPT-011"
+    ],
+    "is_outlier": false,
+    "outlier_ratio": 1.615,
+    "risk_score": "high",
+    "explanation": "Same vendor, date, and amount as RCPT-011 strongly suggests this is a duplicate submission rather than a coincidental match, warranting high scrutiny despite the transaction itself being legitimate client entertainment."
+  },
+  {
+    "receipt_id": "RCPT-007",
+    "vendor": "Linda Park (Mileage Reimbursement)",
+    "date": "2026-07-19",
+    "amount": 80.4,
+    "currency": "USD",
+    "amount_usd": 80.4,
+    "category": "mileage",
+    "line_items": [
+      {
+        "description": "120 miles @ $0.67/mile (Seoul Office -> Client Site (Incheon) -> Seoul Office)",
+        "amount": 80.4
+      }
+    ],
+    "confidence_score": 0.9,
+    "decision": "compliant",
+    "reason": "Within policy limits.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 1.0,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-008",
+    "vendor": "FREE NOW TAXI",
+    "date": "2026-07-20",
+    "amount": 134.5,
+    "currency": "EUR",
+    "amount_usd": 145.0,
+    "category": "ground_transport",
+    "line_items": [
+      {
+        "description": "Taxi fare from Berlin Brandenburg Airport to Downtown Hotel (via detour)",
+        "amount": 134.5
+      }
+    ],
+    "confidence_score": 0.85,
+    "decision": "flagged",
+    "reason": "The fare exceeds the $100 threshold and lacks the required business justification note, so it must be reviewed despite the plausible airport-transfer/traffic-detour context.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": true,
+    "outlier_ratio": 2.155,
+    "risk_score": "medium",
+    "explanation": "The $145 fare exceeds the ground_transport category average by more than the flagged threshold and lacks a required business justification note, though a plausible airport-transfer context keeps it from being clearly fraudulent."
+  },
+  {
+    "receipt_id": "RCPT-009",
+    "vendor": "The Manhattan Hotel",
+    "date": "2026-07-20",
+    "amount": 380.0,
+    "currency": "USD",
+    "amount_usd": 380.0,
+    "category": "lodging",
+    "line_items": [
+      {
+        "description": "Room rate (1 night)",
+        "amount": 350.0
+      },
+      {
+        "description": "Occupancy tax",
+        "amount": 30.0
+      }
+    ],
+    "confidence_score": 0.95,
+    "decision": "compliant",
+    "reason": "Within policy limits.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 0.927,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-010",
+    "vendor": "Tokyo MK Taxi",
+    "date": "2026-07-27",
+    "amount": 3400,
+    "currency": "JPY",
+    "amount_usd": 22.7,
+    "category": "ground_transport",
+    "line_items": [
+      {
+        "description": "Taxi fare",
+        "amount": 3400
+      }
+    ],
+    "confidence_score": 0.35,
+    "decision": "flagged",
+    "reason": "The negative submission gap (-6 days) suggests the transaction date was misread due to poor OCR quality, so this data ambiguity needs human verification rather than automatic compliance.",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 0.337,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  },
+  {
+    "receipt_id": "RCPT-011",
+    "vendor": "The Oberoi - Fine Dining",
+    "date": "2026-07-18",
+    "amount": 25823.0,
+    "currency": "INR",
+    "amount_usd": 310.0,
+    "category": "meals",
+    "line_items": [
+      {
+        "description": "Set Menu x4",
+        "amount": 18000.0
+      },
+      {
+        "description": "Non-alcoholic beverages",
+        "amount": 2000.0
+      },
+      {
+        "description": "Service Charge",
+        "amount": 1800.0
+      },
+      {
+        "description": "Tax (5%)",
+        "amount": 1090.0
+      }
+    ],
+    "confidence_score": 0.9,
+    "decision": "flagged",
+    "reason": "The receipt explicitly notes this is a resubmission of the same transaction as RCPT-006, raising a duplicate-payment risk that requires human review in addition to the per-person meal cost ($77.50/person for a 4-person client dinner) exceeding the $75 individual meal cap.",
+    "is_duplicate": true,
+    "duplicate_of": [
+      "RCPT-006"
+    ],
+    "is_outlier": false,
+    "outlier_ratio": 1.615,
+    "risk_score": "high",
+    "explanation": "This receipt is explicitly a resubmission of RCPT-006 with matching vendor, date, and amount, and also exceeds the per-person meal cap, indicating a high risk of duplicate payment requiring human review."
+  },
+  {
+    "receipt_id": "RCPT-012",
+    "vendor": "Taj Lands End",
+    "date": "2026-07-23",
+    "amount": 19320.0,
+    "currency": "INR",
+    "amount_usd": 232.0,
+    "category": "meals",
+    "line_items": [
+      {
+        "description": "Chef's Tasting Menu",
+        "amount": 16500.0
+      },
+      {
+        "description": "Bottled Water",
+        "amount": 250.0
+      },
+      {
+        "description": "Service Charge",
+        "amount": 1650.0
+      },
+      {
+        "description": "Tax (5%)",
+        "amount": 920.0
+      }
+    ],
+    "confidence_score": 0.9,
+    "decision": "flagged",
+    "reason": "Threshold breached with no mitigating context: $232.00 vs $75.00/per_meal cap",
+    "is_duplicate": false,
+    "duplicate_of": [],
+    "is_outlier": false,
+    "outlier_ratio": 1.209,
+    "risk_score": "low",
+    "explanation": "No duplicate or outlier signals detected."
+  }
+]
