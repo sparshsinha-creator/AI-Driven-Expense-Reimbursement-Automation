@@ -29,7 +29,7 @@
         "amount": 134.5
       }
     ],
-    "confidence_score": 0.92,
+    "confidence_score": 0.9,
     "decision": "flagged",
     "reason": "Non-negotiable rule violated: line item 'House Red Wine' matches alcohol keyword 'Wine' - Not reimbursable under any circumstance, including client entertainment."
   },
@@ -69,7 +69,7 @@
         "amount": 8.0
       }
     ],
-    "confidence_score": 0.95,
+    "confidence_score": 0.92,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
@@ -83,7 +83,7 @@
     "category": "airfare",
     "line_items": [
       {
-        "description": "Fare (LHR-CDG, Economy)",
+        "description": "Fare (Economy)",
         "amount": 116.0
       },
       {
@@ -91,7 +91,7 @@
         "amount": 22.0
       }
     ],
-    "confidence_score": 0.9,
+    "confidence_score": 0.92,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
@@ -113,7 +113,7 @@
         "amount": 16.5
       }
     ],
-    "confidence_score": 0.95,
+    "confidence_score": 0.92,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
@@ -143,9 +143,9 @@
         "amount": 1090.0
       }
     ],
-    "confidence_score": 0.9,
+    "confidence_score": 0.92,
     "decision": "flagged",
-    "reason": "Although no alcohol was involved and the meal was legitimate client entertainment, the $310 total still averages about $77.50 per person for the 4 diners, exceeding the $75 per-meal cap, so it needs human review to confirm the per-person allocation."
+    "reason": "Even split evenly across the party of 4, the per-person cost (~$77.50) still exceeds the $75 individual meal cap, so this group business receipt needs human review to confirm proper cost allocation and approval despite the legitimate client entertainment context."
   },
   {
     "receipt_id": "RCPT-007",
@@ -167,7 +167,7 @@
   },
   {
     "receipt_id": "RCPT-008",
-    "vendor": "FREE NOW TAXI",
+    "vendor": "FREE NOW Taxi",
     "date": "2026-07-20",
     "amount": 134.5,
     "currency": "EUR",
@@ -175,13 +175,13 @@
     "category": "ground_transport",
     "line_items": [
       {
-        "description": "Taxi fare from Berlin Brandenburg Airport to Downtown Hotel (via detour)",
+        "description": "Taxi fare: Berlin Brandenburg Airport to Downtown Hotel (via detour - traffic diversion)",
         "amount": 134.5
       }
     ],
     "confidence_score": 0.85,
     "decision": "flagged",
-    "reason": "The fare exceeds the $100 threshold and lacks the required business justification note, so it must be reviewed despite the plausible airport-transfer/traffic-detour context."
+    "reason": "The fare exceeds the $100 threshold and no business justification note is attached, so it violates R-05 and requires human review."
   },
   {
     "receipt_id": "RCPT-009",
@@ -193,7 +193,7 @@
     "category": "lodging",
     "line_items": [
       {
-        "description": "Room rate (1 night)",
+        "description": "Room rate",
         "amount": 350.0
       },
       {
@@ -208,20 +208,20 @@
   {
     "receipt_id": "RCPT-010",
     "vendor": "Tokyo MK Taxi",
-    "date": "2026-07-27",
+    "date": "2026-07-2?",
     "amount": 3400,
     "currency": "JPY",
     "amount_usd": 22.7,
     "category": "ground_transport",
     "line_items": [
       {
-        "description": "Taxi fare",
+        "description": "Taxi fare (digit unclear, estimated)",
         "amount": 3400
       }
     ],
-    "confidence_score": 0.35,
+    "confidence_score": 0.25,
     "decision": "flagged",
-    "reason": "The negative submission gap (-6 days) suggests the transaction date was misread due to poor OCR quality, so this data ambiguity needs human verification rather than automatic compliance."
+    "reason": "The receipt's date and amount are illegible due to poor scan quality, preventing verification of the submission window and transaction amount, so it requires human review."
   },
   {
     "receipt_id": "RCPT-011",
@@ -251,7 +251,7 @@
     ],
     "confidence_score": 0.9,
     "decision": "flagged",
-    "reason": "The receipt explicitly notes this is a resubmission of the same transaction as RCPT-006, raising a duplicate-payment risk that requires human review in addition to the per-person meal cost ($77.50/person for a 4-person client dinner) exceeding the $75 individual meal cap."
+    "reason": "This receipt is explicitly noted as a resubmission of the same transaction as RCPT-006 via a different channel, raising a duplicate-payment risk that requires human review regardless of the per-meal cap calculation."
   },
   {
     "receipt_id": "RCPT-012",

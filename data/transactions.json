@@ -29,7 +29,7 @@
         "amount": 134.5
       }
     ],
-    "confidence_score": 0.92
+    "confidence_score": 0.9
   },
   {
     "receipt_id": "RCPT-002",
@@ -65,7 +65,7 @@
         "amount": 8.0
       }
     ],
-    "confidence_score": 0.95
+    "confidence_score": 0.92
   },
   {
     "receipt_id": "RCPT-004",
@@ -77,7 +77,7 @@
     "category": "airfare",
     "line_items": [
       {
-        "description": "Fare (LHR-CDG, Economy)",
+        "description": "Fare (Economy)",
         "amount": 116.0
       },
       {
@@ -85,7 +85,7 @@
         "amount": 22.0
       }
     ],
-    "confidence_score": 0.9
+    "confidence_score": 0.92
   },
   {
     "receipt_id": "RCPT-005",
@@ -105,7 +105,7 @@
         "amount": 16.5
       }
     ],
-    "confidence_score": 0.95
+    "confidence_score": 0.92
   },
   {
     "receipt_id": "RCPT-006",
@@ -133,7 +133,7 @@
         "amount": 1090.0
       }
     ],
-    "confidence_score": 0.9
+    "confidence_score": 0.92
   },
   {
     "receipt_id": "RCPT-007",
@@ -153,7 +153,7 @@
   },
   {
     "receipt_id": "RCPT-008",
-    "vendor": "FREE NOW TAXI",
+    "vendor": "FREE NOW Taxi",
     "date": "2026-07-20",
     "amount": 134.5,
     "currency": "EUR",
@@ -161,7 +161,7 @@
     "category": "ground_transport",
     "line_items": [
       {
-        "description": "Taxi fare from Berlin Brandenburg Airport to Downtown Hotel (via detour)",
+        "description": "Taxi fare: Berlin Brandenburg Airport to Downtown Hotel (via detour - traffic diversion)",
         "amount": 134.5
       }
     ],
@@ -177,7 +177,7 @@
     "category": "lodging",
     "line_items": [
       {
-        "description": "Room rate (1 night)",
+        "description": "Room rate",
         "amount": 350.0
       },
       {
@@ -190,18 +190,18 @@
   {
     "receipt_id": "RCPT-010",
     "vendor": "Tokyo MK Taxi",
-    "date": "2026-07-27",
+    "date": "2026-07-2?",
     "amount": 3400,
     "currency": "JPY",
     "amount_usd": 22.7,
     "category": "ground_transport",
     "line_items": [
       {
-        "description": "Taxi fare",
+        "description": "Taxi fare (digit unclear, estimated)",
         "amount": 3400
       }
     ],
-    "confidence_score": 0.35
+    "confidence_score": 0.25
   },
   {
     "receipt_id": "RCPT-011",
