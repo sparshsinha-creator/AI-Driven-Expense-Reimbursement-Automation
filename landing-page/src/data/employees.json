@@ -1,0 +1,102 @@
+[
+  {
+    "employee_id": "E001",
+    "name": "Priya Nair",
+    "department": "Sales",
+    "role": "Account Executive",
+    "manager_id": "E006",
+    "cost_center": "CC-SALES-01",
+    "location": "Mumbai",
+    "email": "priya.nair@meridiancorp.com"
+  },
+  {
+    "employee_id": "E002",
+    "name": "Daniel Cho",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "manager_id": "E007",
+    "cost_center": "CC-ENG-01",
+    "location": "Seoul",
+    "email": "daniel.cho@meridiancorp.com"
+  },
+  {
+    "employee_id": "E003",
+    "name": "Maria Gonzalez",
+    "department": "Marketing",
+    "role": "Marketing Manager",
+    "manager_id": "E008",
+    "cost_center": "CC-MKT-01",
+    "location": "Madrid",
+    "email": "maria.gonzalez@meridiancorp.com"
+  },
+  {
+    "employee_id": "E004",
+    "name": "James Wilson",
+    "department": "Sales",
+    "role": "Account Executive",
+    "manager_id": "E006",
+    "cost_center": "CC-SALES-01",
+    "location": "London",
+    "email": "james.wilson@meridiancorp.com"
+  },
+  {
+    "employee_id": "E005",
+    "name": "Aisha Khan",
+    "department": "Engineering",
+    "role": "Senior Engineer",
+    "manager_id": "E007",
+    "cost_center": "CC-ENG-01",
+    "location": "Dubai",
+    "email": "aisha.khan@meridiancorp.com"
+  },
+  {
+    "employee_id": "E006",
+    "name": "Robert Singh",
+    "department": "Sales",
+    "role": "Sales Director",
+    "manager_id": "E009",
+    "cost_center": "CC-SALES-00",
+    "location": "Mumbai",
+    "email": "robert.singh@meridiancorp.com"
+  },
+  {
+    "employee_id": "E007",
+    "name": "Linda Park",
+    "department": "Engineering",
+    "role": "Engineering Manager",
+    "manager_id": "E009",
+    "cost_center": "CC-ENG-00",
+    "location": "Seoul",
+    "email": "linda.park@meridiancorp.com"
+  },
+  {
+    "employee_id": "E008",
+    "name": "Thomas Berger",
+    "department": "Marketing",
+    "role": "Marketing Director",
+    "manager_id": "E009",
+    "cost_center": "CC-MKT-00",
+    "location": "Berlin",
+    "email": "thomas.berger@meridiancorp.com"
+  },
+  {
+    "employee_id": "E009",
+    "name": "Sarah Johnson",
+    "department": "Executive",
+    "role": "VP Operations",
+    "manager_id": null,
+    "cost_center": "CC-EXEC-00",
+    "location": "New York",
+    "email": "sarah.johnson@meridiancorp.com"
+  },
+  {
+    "employee_id": "E010",
+    "name": "Kenji Watanabe",
+    "department": "Sales",
+    "role": "Account Executive",
+    "manager_id": "E006",
+    "cost_center": "CC-SALES-01",
+    "location": "Tokyo",
+    "email": "kenji.watanabe@meridiancorp.com"
+  }
+]
