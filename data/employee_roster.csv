@@ -1,11 +1,11 @@
 employee_id,name,department,role,manager_id,cost_center,location,email
-E001,Priya Nair,Sales,Account Executive,E006,CC-SALES-01,Mumbai,priya.nair@meridiancorp.com
-E002,Daniel Cho,Engineering,Software Engineer,E007,CC-ENG-01,Seoul,daniel.cho@meridiancorp.com
-E003,Maria Gonzalez,Marketing,Marketing Manager,E008,CC-MKT-01,Madrid,maria.gonzalez@meridiancorp.com
-E004,James Wilson,Sales,Account Executive,E006,CC-SALES-01,London,james.wilson@meridiancorp.com
-E005,Aisha Khan,Engineering,Senior Engineer,E007,CC-ENG-01,Dubai,aisha.khan@meridiancorp.com
+E009,Sarah Johnson,Executive,VP Operations,,CC-EXEC-00,New York,sarah.johnson@meridiancorp.com
 E006,Robert Singh,Sales,Sales Director,E009,CC-SALES-00,Mumbai,robert.singh@meridiancorp.com
 E007,Linda Park,Engineering,Engineering Manager,E009,CC-ENG-00,Seoul,linda.park@meridiancorp.com
 E008,Thomas Berger,Marketing,Marketing Director,E009,CC-MKT-00,Berlin,thomas.berger@meridiancorp.com
-E009,Sarah Johnson,Executive,VP Operations,,CC-EXEC-00,New York,sarah.johnson@meridiancorp.com
+E011,Omar Haddad,Finance,Finance Director,E009,CC-FIN-00,Singapore,omar.haddad@meridiancorp.com
+E001,Ananya Verma,Sales,Account Executive,E006,CC-SALES-01,Mumbai,ananya.verma@meridiancorp.com
+E004,James Wilson,Sales,Account Executive,E006,CC-SALES-01,London,james.wilson@meridiancorp.com
 E010,Kenji Watanabe,Sales,Account Executive,E006,CC-SALES-01,Tokyo,kenji.watanabe@meridiancorp.com
+E002,Daniel Cho,Engineering,Software Engineer,E007,CC-ENG-01,Seoul,daniel.cho@meridiancorp.com
+E003,Maria Gonzalez,Marketing,Marketing Manager,E008,CC-MKT-01,Madrid,maria.gonzalez@meridiancorp.com

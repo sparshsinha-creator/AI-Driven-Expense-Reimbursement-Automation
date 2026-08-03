@@ -26,6 +26,7 @@ import FraudAlertsChart from "../components/FraudAlertsChart";
 import CategoryChart from "../components/CategoryChart";
 import StatusChart from "../components/StatusChart";
 import PolicyModal from "../components/PolicyModal";
+import ReportIssueModal from "../components/ReportIssueModal";
 
 function isCurrentMonth(isoDate) {
   const d = new Date(isoDate);
@@ -39,6 +40,7 @@ export default function Dashboard() {
   const claims = useClaims();
   const employees = useEmployees();
   const [policyOpen, setPolicyOpen] = useState(false);
+  const [reportIssueOpen, setReportIssueOpen] = useState(false);
 
   useEffect(() => {
     if (!currentUser) {
@@ -77,11 +79,14 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page personalized-dashboard">
       <div className="dashboard-top-grid">
-        <WelcomeCard user={currentUser} />
+        <WelcomeCard user={currentUser} employees={employees} />
         <ProfileCard user={currentUser} />
       </div>
 
-      <QuickActions onOpenPolicy={() => setPolicyOpen(true)} />
+      <QuickActions
+        onOpenPolicy={() => setPolicyOpen(true)}
+        onOpenReportIssue={() => setReportIssueOpen(true)}
+      />
 
       <div className="stats-grid">
         <StatCard
@@ -125,6 +130,12 @@ export default function Dashboard() {
       <ActivityFeed claims={myClaims} />
 
       <PolicyModal open={policyOpen} onClose={() => setPolicyOpen(false)} />
+      <ReportIssueModal
+        open={reportIssueOpen}
+        onClose={() => setReportIssueOpen(false)}
+        user={currentUser}
+        employees={employees}
+      />
     </div>
   );
 }

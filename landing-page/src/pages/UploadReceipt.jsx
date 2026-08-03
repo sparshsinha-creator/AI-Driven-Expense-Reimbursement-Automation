@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import jsPDF from "jspdf";
 import {
   HiOutlineEnvelope,
   HiOutlineCloudArrowUp,
@@ -11,6 +12,7 @@ import {
 } from "react-icons/hi2";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { useClaims } from "../hooks/useClaims";
+import { useEmployees } from "../hooks/useEmployees";
 import { getSessionClaims, addSessionClaim } from "../utils/sessionClaims";
 import { formatUsd, formatDate } from "../utils/format";
 
@@ -47,6 +49,7 @@ const STEP_DURATION = 450;
 export default function UploadReceipt() {
   const currentUser = useCurrentUser();
   const claims = useClaims();
+  const employees = useEmployees();
   const navigate = useNavigate();
 
   const [stage, setStage] = useState("idle"); // idle | processing | done
@@ -128,6 +131,17 @@ export default function UploadReceipt() {
     const nextNumber = claims.length + getSessionClaims().length + 1;
     const receiptId = `RCPT-${String(nextNumber).padStart(3, "0")}`;
 
+    const filenameEmployeeMatch = file.name.match(/E\d{3}/);
+    const filenameEmployeeId = filenameEmployeeMatch ? filenameEmployeeMatch[0] : null;
+    const filenameEmployee = filenameEmployeeId
+      ? employees.find((e) => e.employee_id === filenameEmployeeId)
+      : null;
+    // No match found at all is NOT treated as verified - an unrelated PDF with no
+    // employee ID in its filename should still be flagged, not silently pass through.
+    const emailVerified =
+      !!filenameEmployee &&
+      filenameEmployee.email.toLowerCase() === currentUser.email.toLowerCase();
+
     const newClaim = {
       receipt_id: receiptId,
       vendor: picked.vendor,
@@ -145,6 +159,7 @@ export default function UploadReceipt() {
       summary: "Submitted just now - this claim hasn't reached policy validation or routing yet.",
       file_name: file.name,
       uploaded_at: new Date().toISOString(),
+      emailVerified,
     };
 
     addSessionClaim(newClaim);
@@ -157,6 +172,57 @@ export default function UploadReceipt() {
     setFileError("");
     setResult(null);
     setStage("idle");
+  }
+
+  function handleDownloadStatement() {
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Reimbursement Statement", 20, 20);
+
+    doc.setFontSize(11);
+    doc.text("AI-Driven Expense Reimbursement Automation — Meridian Corp", 20, 28);
+
+    doc.setFontSize(9);
+    doc.text(`Generated: ${new Date().toLocaleString("en-US")}`, 20, 34);
+
+    doc.setFontSize(12);
+    doc.text("Employee", 20, 48);
+    doc.setFontSize(10);
+    doc.text(`Name: ${currentUser.name}`, 20, 55);
+    doc.text(`Employee ID: ${currentUser.employee_id}`, 20, 61);
+    doc.text(`Department: ${currentUser.department || "Unassigned"}`, 20, 67);
+
+    doc.setFontSize(12);
+    doc.text("Claim Details", 20, 81);
+    doc.setFontSize(10);
+    const fields = [
+      ["Receipt ID", result.receipt_id],
+      ["Vendor", result.vendor],
+      ["Date", formatDate(result.date)],
+      ["Category", CATEGORY_LABELS[result.category] || result.category],
+      ["Amount", formatUsd(result.amount)],
+      ["Status", "Processing"],
+    ];
+    let y = 88;
+    for (const [label, value] of fields) {
+      doc.text(`${label}:`, 20, y);
+      doc.text(String(value), 70, y);
+      y += 7;
+    }
+
+    doc.setFontSize(9);
+    doc.text(
+      doc.splitTextToSize(
+        "This claim is newly submitted and has not yet gone through policy validation " +
+          "or routing. This statement reflects its status at the time of download.",
+        170
+      ),
+      20,
+      y + 8
+    );
+
+    doc.save(`Reimbursement_Statement_${result.receipt_id}.pdf`);
   }
 
   return (
@@ -302,26 +368,30 @@ export default function UploadReceipt() {
                 <span className="badge badge-neutral">Processing</span>
               </p>
 
-              <div className="upload-extracted-grid">
-                <div className="upload-extracted-item">
-                  <span className="upload-extracted-label">Vendor</span>
-                  <span className="upload-extracted-value">{result.vendor}</span>
+              {!result.emailVerified && <p className="fake-invoice-alert">FAKE INVOICE</p>}
+
+              {result.emailVerified && (
+                <div className="upload-extracted-grid">
+                  <div className="upload-extracted-item">
+                    <span className="upload-extracted-label">Vendor</span>
+                    <span className="upload-extracted-value">{result.vendor}</span>
+                  </div>
+                  <div className="upload-extracted-item">
+                    <span className="upload-extracted-label">Amount</span>
+                    <span className="upload-extracted-value">{formatUsd(result.amount)}</span>
+                  </div>
+                  <div className="upload-extracted-item">
+                    <span className="upload-extracted-label">Category</span>
+                    <span className="upload-extracted-value">
+                      {CATEGORY_LABELS[result.category]}
+                    </span>
+                  </div>
+                  <div className="upload-extracted-item">
+                    <span className="upload-extracted-label">Date</span>
+                    <span className="upload-extracted-value">{formatDate(result.date)}</span>
+                  </div>
                 </div>
-                <div className="upload-extracted-item">
-                  <span className="upload-extracted-label">Amount</span>
-                  <span className="upload-extracted-value">{formatUsd(result.amount)}</span>
-                </div>
-                <div className="upload-extracted-item">
-                  <span className="upload-extracted-label">Category</span>
-                  <span className="upload-extracted-value">
-                    {CATEGORY_LABELS[result.category]}
-                  </span>
-                </div>
-                <div className="upload-extracted-item">
-                  <span className="upload-extracted-label">Date</span>
-                  <span className="upload-extracted-value">{formatDate(result.date)}</span>
-                </div>
-              </div>
+              )}
 
               <p className="auth-note">
                 This is a simulated extraction for the demo - no OCR or model call
@@ -337,6 +407,15 @@ export default function UploadReceipt() {
                 <Link to="/dashboard" className="btn btn-ghost auth-submit">
                   Back to dashboard
                 </Link>
+                {result.emailVerified && (
+                  <button
+                    type="button"
+                    className="btn btn-ghost auth-submit"
+                    onClick={handleDownloadStatement}
+                  >
+                    Download Reimbursement Statement
+                  </button>
+                )}
               </div>
             </motion.div>
           )}

@@ -1,7 +1,8 @@
 """Phase 5: Workflow Decision Simulation - routing layer.
 
 Joins Phase 3's validated transactions (decision, reason, amount_usd, ...)
-with Phase 4's risk-scored transactions (risk_score) by receipt_id, then
+with Phase 4's risk-scored transactions (risk_score, risk_explanation,
+is_duplicate, duplicate_of, is_outlier, outlier_ratio) by receipt_id, then
 applies data/approval_matrix.json's routing rules in the order they're listed
 (first-match-wins) to assign each transaction one of: rejected, auto_approved,
 pending_manager_approval, pending_finance_approval.
@@ -13,7 +14,7 @@ used in react_controller.py and workflow_agent.py) to attach an approver.
 Finally, Claude drafts a one-sentence approval summary for every transaction
 - tone depends on routed_status: a factual confirmation for auto_approved,
 a rejection notice for rejected, and an actionable briefing for the two
-pending_* statuses. All 12 records are written to data/final_decisions.json.
+pending_* statuses. All 11 records are written to data/final_decisions.json.
 """
 
 import csv
@@ -63,6 +64,10 @@ def join_transactions(validated: list[dict], risk_scored: list[dict]) -> list[di
                 "risk_score": risk_record["risk_score"],
                 "risk_explanation": risk_record["explanation"],
                 "policy_compliant": txn["decision"] == "compliant",
+                "is_duplicate": risk_record["is_duplicate"],
+                "duplicate_of": risk_record["duplicate_of"],
+                "is_outlier": risk_record["is_outlier"],
+                "outlier_ratio": risk_record["outlier_ratio"],
             }
         )
     return joined
@@ -135,11 +140,15 @@ def route_all(transactions: list[dict], routing_rules: list[dict]) -> list[dict]
     return routed
 
 
-# Fixed placeholder identity for approver_level == "finance" cases. Not looked
-# up from employee_roster.csv - this dummy dataset has no real finance
-# department, so finance escalations get a department-level identity rather
-# than (incorrectly) reusing the submitter's direct reporting manager.
-FINANCE_TEAM_APPROVER = {
+# Real finance approver (Omar Haddad, Finance Director), resolved from
+# employee_roster.csv like any other approver rather than reusing the
+# submitter's direct reporting manager.
+FINANCE_APPROVER_ID = "E011"
+
+# Placeholder used only if FINANCE_APPROVER_ID isn't found in the roster
+# (e.g. the roster is edited without updating this constant), so finance
+# escalations still resolve to something rather than crashing.
+FINANCE_TEAM_FALLBACK = {
     "approver_id": "FINANCE-TEAM",
     "approver_name": "Finance Team",
     "approver_email": "finance@meridiancorp.com",
@@ -203,6 +212,23 @@ def resolve_approver(employee_id: str, roster: dict[str, dict]) -> dict:
     }
 
 
+def resolve_finance_approver(roster: dict[str, dict]) -> dict:
+    """Look up FINANCE_APPROVER_ID in the roster and return their approver
+    details, falling back to FINANCE_TEAM_FALLBACK only if that employee_id
+    isn't present in employee_roster.csv.
+    """
+    approver = roster.get(FINANCE_APPROVER_ID)
+    if approver is None:
+        return dict(FINANCE_TEAM_FALLBACK)
+
+    return {
+        "approver_id": FINANCE_APPROVER_ID,
+        "approver_name": approver["name"],
+        "approver_email": approver["email"],
+        "approver_resolution_note": None,
+    }
+
+
 def attach_approvers(
     routed: list[dict], employee_id_by_receipt: dict[str, str], roster: dict[str, dict]
 ) -> list[dict]:
@@ -220,13 +246,13 @@ def attach_approvers(
         employee = roster.get(employee_id)
         employee_name = employee["name"] if employee is not None else None
 
-        # Finance escalations go to a fixed Finance Team identity, not the
+        # Finance escalations go to the resolved Finance Director, not the
         # submitter's direct manager - approver_level == "direct_manager"
         # (pending_manager_approval) and "none" (rejected/auto_approved,
         # record-keeping only) both still resolve the actual reporting
         # manager as before.
         if txn["approver_level"] == "finance":
-            approver = dict(FINANCE_TEAM_APPROVER)
+            approver = resolve_finance_approver(roster)
         else:
             approver = resolve_approver(employee_id, roster)
 
@@ -307,9 +333,10 @@ mentioned because they are the one who needs to act (or, for auto_approved/rejec
 person kept on record). Never describe the approver as the one who made the purchase or \
 incurred the charge.
 
-The approver named "Finance Team" is a department, not an individual person - phrase \
-the sentence accordingly (e.g. "requires Finance Team review" or "Finance Team needs to \
-decide on..."), not as if it were someone's personal name.
+The finance approver is Omar Haddad, Finance Director - a real named individual, not a \
+department. Phrase the sentence exactly as you would for any other named approver (e.g. \
+"requires Omar Haddad's review" or "Omar Haddad needs to decide on..."), never as a \
+generic "Finance Team" placeholder.
 
 Write EXACTLY ONE sentence a busy approver could read in two seconds and immediately \
 understand what's being asked of them, if anything.

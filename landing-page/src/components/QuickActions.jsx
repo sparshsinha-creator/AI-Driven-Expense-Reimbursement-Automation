@@ -5,13 +5,14 @@ import {
   HiOutlineChatBubbleLeftRight,
   HiOutlineClipboardDocumentList,
   HiOutlineChartBar,
+  HiOutlineExclamationTriangle,
 } from "react-icons/hi2";
 
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-export default function QuickActions({ onOpenPolicy }) {
+export default function QuickActions({ onOpenPolicy, onOpenReportIssue }) {
   const navigate = useNavigate();
 
   const actions = [
@@ -44,6 +45,12 @@ export default function QuickActions({ onOpenPolicy }) {
       label: "Analytics",
       icon: <HiOutlineChartBar size={24} />,
       onClick: () => scrollToId("analytics-charts"),
+    },
+    {
+      key: "report-issue",
+      label: "Report an Issue",
+      icon: <HiOutlineExclamationTriangle size={24} />,
+      onClick: onOpenReportIssue,
     },
   ];
 

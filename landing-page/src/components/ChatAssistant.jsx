@@ -9,6 +9,12 @@ import {
   HiOutlineSparkles,
 } from "react-icons/hi2";
 import { findChatbotResponse } from "../data/chatbotResponses";
+import { useCurrentUser } from "../hooks/useCurrentUser";
+import { useClaims } from "../hooks/useClaims";
+import { useEmployees } from "../hooks/useEmployees";
+import { getManagerActions } from "../utils/managerActions";
+import { answerTeamQuestion } from "../utils/teamQueryAssistant";
+import { answerFinanceQuestion } from "../utils/financeQueryAssistant";
 
 function formatTime(date) {
   return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
@@ -31,6 +37,24 @@ function makeWelcomeMessage() {
 }
 
 export default function ChatAssistant() {
+  // ChatAssistant is mounted once globally (App.jsx), independent of
+  // whichever page is currently showing - so it computes its own manager
+  // scope the same way ManagerDashboard.jsx does, rather than needing that
+  // page's state prop-drilled in.
+  const currentUser = useCurrentUser();
+  const claims = useClaims();
+  const employees = useEmployees();
+  // Same priority as DashboardLayout.jsx's nav gating: Finance is checked
+  // before the manager_id-based check, so a Finance user's questions are
+  // answered from financeQueue, not myTeamClaims.
+  const isFinance = !!currentUser && currentUser.department === "Finance";
+  const isManager =
+    !!currentUser && employees.some((e) => e.manager_id === currentUser.employee_id);
+  const myTeamClaims = currentUser
+    ? claims.filter((c) => c.approver_id === currentUser.employee_id)
+    : [];
+  const financeQueue = claims.filter((c) => c.approver_level === "finance");
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState(() => [makeWelcomeMessage()]);
@@ -97,7 +121,16 @@ export default function ChatAssistant() {
     setInput("");
     setIsTyping(true);
 
-    const response = findChatbotResponse(trimmed);
+    const financeAnswer = isFinance ? answerFinanceQuestion(trimmed, { financeQueue }) : null;
+    const teamAnswer =
+      !financeAnswer && isManager
+        ? answerTeamQuestion(trimmed, {
+            myTeamClaims,
+            employees,
+            managerActions: getManagerActions(),
+          })
+        : null;
+    const response = financeAnswer ?? teamAnswer ?? findChatbotResponse(trimmed);
     const delay = Math.min(1200, 500 + response.length * 4);
 
     typingTimeoutRef.current = setTimeout(() => {

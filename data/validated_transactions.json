@@ -47,7 +47,7 @@
         "amount": 45000
       }
     ],
-    "confidence_score": 0.9,
+    "confidence_score": 0.92,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
@@ -69,7 +69,7 @@
         "amount": 8.0
       }
     ],
-    "confidence_score": 0.92,
+    "confidence_score": 0.95,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
@@ -83,7 +83,7 @@
     "category": "airfare",
     "line_items": [
       {
-        "description": "Fare (Economy)",
+        "description": "Fare",
         "amount": 116.0
       },
       {
@@ -91,29 +91,7 @@
         "amount": 22.0
       }
     ],
-    "confidence_score": 0.92,
-    "decision": "compliant",
-    "reason": "Within policy limits."
-  },
-  {
-    "receipt_id": "RCPT-005",
-    "vendor": "Office Depot Dubai",
-    "date": "2026-07-17",
-    "amount": 346.5,
-    "currency": "AED",
-    "amount_usd": 89.99,
-    "category": "office_supplies",
-    "line_items": [
-      {
-        "description": "Adjustable Monitor Stand",
-        "amount": 330.0
-      },
-      {
-        "description": "VAT (5%)",
-        "amount": 16.5
-      }
-    ],
-    "confidence_score": 0.92,
+    "confidence_score": 0.95,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
@@ -143,9 +121,9 @@
         "amount": 1090.0
       }
     ],
-    "confidence_score": 0.92,
+    "confidence_score": 0.9,
     "decision": "flagged",
-    "reason": "Even split evenly across the party of 4, the per-person cost (~$77.50) still exceeds the $75 individual meal cap, so this group business receipt needs human review to confirm proper cost allocation and approval despite the legitimate client entertainment context."
+    "reason": "Even split across the party of 4, the per-person cost (~$77.50) still exceeds the $75 per-meal cap, and while no alcohol appears on the itemized receipt, the overage warrants human review rather than automatic compliance."
   },
   {
     "receipt_id": "RCPT-007",
@@ -175,13 +153,13 @@
     "category": "ground_transport",
     "line_items": [
       {
-        "description": "Taxi fare: Berlin Brandenburg Airport to Downtown Hotel (via detour - traffic diversion)",
+        "description": "Taxi fare - Berlin Brandenburg Airport to Downtown Hotel (via detour - traffic diversion)",
         "amount": 134.5
       }
     ],
-    "confidence_score": 0.85,
+    "confidence_score": 0.9,
     "decision": "flagged",
-    "reason": "The fare exceeds the $100 threshold and no business justification note is attached, so it violates R-05 and requires human review."
+    "reason": "The fare exceeds the $100 threshold and no business justification note is present to satisfy R-05, so it requires human review."
   },
   {
     "receipt_id": "RCPT-009",
@@ -193,7 +171,7 @@
     "category": "lodging",
     "line_items": [
       {
-        "description": "Room rate",
+        "description": "Room rate (1 night)",
         "amount": 350.0
       },
       {
@@ -201,27 +179,27 @@
         "amount": 30.0
       }
     ],
-    "confidence_score": 0.95,
+    "confidence_score": 0.97,
     "decision": "compliant",
     "reason": "Within policy limits."
   },
   {
     "receipt_id": "RCPT-010",
     "vendor": "Tokyo MK Taxi",
-    "date": "2026-07-2?",
+    "date": "2026-07-21",
     "amount": 3400,
     "currency": "JPY",
     "amount_usd": 22.7,
     "category": "ground_transport",
     "line_items": [
       {
-        "description": "Taxi fare (digit unclear, estimated)",
+        "description": "Taxi fare",
         "amount": 3400
       }
     ],
     "confidence_score": 0.25,
-    "decision": "flagged",
-    "reason": "The receipt's date and amount are illegible due to poor scan quality, preventing verification of the submission window and transaction amount, so it requires human review."
+    "decision": "compliant",
+    "reason": "Within policy limits."
   },
   {
     "receipt_id": "RCPT-011",
@@ -251,7 +229,7 @@
     ],
     "confidence_score": 0.9,
     "decision": "flagged",
-    "reason": "This receipt is explicitly noted as a resubmission of the same transaction as RCPT-006 via a different channel, raising a duplicate-payment risk that requires human review regardless of the per-meal cap calculation."
+    "reason": "The receipt is marked as a resubmission of the same transaction as RCPT-006, raising a duplicate-payment risk that requires human review despite the per-person cost (~$77.50) being close to the $75 cap for a legitimate client entertainment meal."
   },
   {
     "receipt_id": "RCPT-012",

@@ -168,6 +168,21 @@ button {
   color: var(--color-neutral);
 }
 
+.duplicate-badge-btn {
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.fake-invoice-alert {
+  margin: 4px 0 24px;
+  font-size: 2.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-danger);
+}
+
 input,
 select,
 textarea {
@@ -1783,6 +1798,12 @@ textarea:focus {
   gap: 32px;
 }
 
+.welcome-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 32px;
+}
+
 .welcome-meta-item {
   display: flex;
   flex-direction: column;
@@ -2099,6 +2120,46 @@ textarea:focus {
   padding: 28px;
 }
 
+.modal-panel-wide {
+  max-width: 720px;
+}
+
+.claimant-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.claimant-name {
+  font-weight: 600;
+}
+
+.claimant-email,
+.claimant-meta {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.finance-row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.finance-comment-cell {
+  background: var(--color-surface-alt);
+  padding: 16px;
+}
+
+.claim-review-status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 20px;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 .modal-header {
   display: flex;
   align-items: center;
@@ -2164,6 +2225,10 @@ textarea:focus {
   .dashboard-secondary-grid {
     grid-template-columns: 1fr;
   }
+
+  .welcome-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ---------- Responsive: mobile ---------- */
@@ -2206,6 +2271,10 @@ textarea:focus {
 
   .welcome-meta {
     gap: 20px;
+  }
+
+  .welcome-meta-grid {
+    grid-template-columns: 1fr;
   }
 
   .claims-filter-bar {

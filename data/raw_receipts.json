@@ -30,13 +30,6 @@
       "raw_text": "AIR FRANCE E-TICKET RECEIPT\nPassenger: WILSON/JAMES\nFlight: AF1780 LHR-CDG  17-Jul-2026\nClass: ECONOMY\nFare: GBP 116.00\nTaxes/Fees: GBP 22.00\nTotal: GBP 138.00\n(~$145.00 USD)"
     },
     {
-      "receipt_id": "RCPT-005",
-      "employee_id": "E005",
-      "submitted_at": "2026-07-17T14:20:00+04:00",
-      "channel": "mobile_photo",
-      "raw_text": "OFFICE DEPOT DUBAI\nDate: 17-Jul-2026\n1x Adjustable Monitor Stand   AED 330.00\nSubtotal: AED 330.00\nVAT (5%): AED 16.50\nTotal: AED 346.50\n(~$89.99 USD)"
-    },
-    {
       "receipt_id": "RCPT-006",
       "employee_id": "E006",
       "submitted_at": "2026-07-18T20:15:00+05:30",
